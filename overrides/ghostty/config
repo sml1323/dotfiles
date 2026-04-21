@@ -1,0 +1,8 @@
+# Personal overrides on top of hendrikmi XDG config
+
+command = zsh --login
+macos-titlebar-style = transparent
+
+background = 000000
+background-opacity = 0.5
+background-blur = 20

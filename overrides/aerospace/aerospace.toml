@@ -68,6 +68,18 @@ outer.bottom =     10
 outer.top =        [{ monitor.main = 25 }, 50]
 outer.right =      10
 
+# ws 1-5 → 맥북(main), ws 6-9 → 외부 모니터 (없으면 main으로 폴백)
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = 'main'
+3 = 'main'
+4 = 'main'
+5 = 'main'
+6 = ['secondary', 'main']
+7 = ['secondary', 'main']
+8 = ['secondary', 'main']
+9 = ['secondary', 'main']
+
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented

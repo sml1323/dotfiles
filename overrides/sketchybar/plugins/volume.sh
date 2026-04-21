@@ -11,6 +11,13 @@ elif command -v betterdisplaycli 2>&1 >/dev/null; then
   fi
 fi
 
+if [ "$VOLUME" = "missing value" ] || [ -z "$VOLUME" ]; then
+  sketchybar --set "$NAME" drawing=off
+  exit 0
+fi
+
+sketchybar --set "$NAME" drawing=on
+
 case $VOLUME in
 [6-9][0-9] | 100)
   ICON="" # nf-fa-volume_up
@@ -21,7 +28,7 @@ case $VOLUME in
 [1-9] | [1-2][0-9])
   ICON="" # nf-fa-volume_off
   ;;
-*) ICON="" ;; # nf-fa-volume_mute (0 or mute)
+*) ICON="" ;;
 esac
 
 sketchybar --set "$NAME" icon="$ICON" label="$VOLUME%"

@@ -2,6 +2,8 @@
 
 macOS 개인 dotfiles. 여러 공개 dotfiles 저장소에서 **차용한 베이스** 위에 **개인 오버라이드**를 올리는 구조.
 
+![screenshot](assets/screenshot.png)
+
 ## 현재 적용 스택
 
 | 도구 | 베이스 | 개인 오버라이드 |
@@ -15,6 +17,9 @@ macOS 개인 dotfiles. 여러 공개 dotfiles 저장소에서 **차용한 베이
 | yazi | hendrikmi 심링크 | (없음) |
 | VSCode | hendrikmi 심링크 | (없음) |
 | karabiner | **미적용** (한영 Caps Lock 충돌) | — |
+| AeroSpace | [manishprivet](https://www.manishk.dev/blogs/macos-ricing-setup/) 참고 | [`overrides/aerospace/aerospace.toml`](overrides/aerospace/aerospace.toml) — 크로스 모니터 포커스, 갭 조정 |
+| SketchyBar | manishprivet 참고 | [`overrides/sketchybar/`](overrides/sketchybar/) — YouTube Music, WiFi RSSI 바, Hack Nerd Font |
+| JankyBorders | manishprivet 참고 | [`overrides/borders/bordersrc`](overrides/borders/bordersrc) — 파란 glow 테두리 |
 
 ## 차용 출처 (Credits)
 
@@ -27,11 +32,18 @@ macOS 개인 dotfiles. 여러 공개 dotfiles 저장소에서 **차용한 베이
 overrides/        # 내 개인 파일만 (hendrikmi 등 원본은 clone해서 심링크)
 ├── ghostty/
 ├── zsh/
-└── nvim-lazyvim/plugins/
+├── nvim-lazyvim/plugins/
+├── aerospace/            # AeroSpace 타일링 WM
+├── borders/              # JankyBorders 창 테두리
+└── sketchybar/           # SketchyBar 상태바
 
 docs/
 ├── setup-guide.md        # 현재 상태 전체 가이드
-└── keys-cheatsheet.md    # nvim + tmux 키 치트시트
+├── keys-cheatsheet.md    # nvim + tmux 키 치트시트
+└── ricing-cheatsheet.md  # AeroSpace + SketchyBar + JankyBorders 키/설정
+
+assets/
+└── screenshot.png        # 현재 데스크탑 스크린샷
 
 sources/          # 차용한 각 repo의 출처/라이선스 기록
 backgrounds/      # 터미널 배경 이미지

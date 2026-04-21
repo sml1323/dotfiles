@@ -22,6 +22,9 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 # Start AeroSpace at login
 start-at-login = true
 
+# Move mouse cursor when focus changes (fixes Spotlight/macOS active monitor)
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -62,7 +65,7 @@ inner.horizontal = 10
 inner.vertical =   10
 outer.left =       10
 outer.bottom =     10
-outer.top =        25
+outer.top =        [{ monitor.main = 25 }, 50]
 outer.right =      10
 
 # 'main' binding mode declaration
@@ -111,6 +114,7 @@ alt-shift-h = 'move --boundaries all-monitors-outer-frame left'
 alt-shift-j = 'move --boundaries all-monitors-outer-frame down'
 alt-shift-k = 'move --boundaries all-monitors-outer-frame up'
 alt-shift-l = 'move --boundaries all-monitors-outer-frame right'
+alt-shift-m = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 alt-shift-minus = 'resize smart -50'

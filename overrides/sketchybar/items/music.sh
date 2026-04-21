@@ -8,7 +8,6 @@ music=(
   padding_right=0
   icon=""
   icon.font="Hack Nerd Font:Bold:17.0"
-  display=1
   # drawing=off
   label="Loading…"
   # background.image=media.artwork

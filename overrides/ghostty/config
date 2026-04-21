@@ -6,3 +6,6 @@ macos-titlebar-style = transparent
 background = 000000
 background-opacity = 0.5
 background-blur = 20
+
+# 드래그 선택만으로 복사되지 않게 (Cmd+C로 명시 복사)
+copy-on-select = false

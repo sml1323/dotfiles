@@ -167,6 +167,11 @@ say "macOS 메뉴바 자동 숨김 설정"
 defaults write NSGlobalDomain _HIHideMenuBar -bool true
 killall SystemUIServer 2>/dev/null || true
 
+# macOS 강조/하이라이트 색상 — Tokyo Night 블루로 통일 (sidebar selection, IME "한" pill)
+say "macOS 강조 색상 → Blue (Tokyo Night 톤 매칭)"
+defaults write NSGlobalDomain AppleAccentColor -int 4
+defaults write NSGlobalDomain AppleHighlightColor -string "0.478431 0.635294 0.968627 Blue"
+
 # -----------------------------------------------------------------------------
 # 9. 완료
 # -----------------------------------------------------------------------------

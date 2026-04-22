@@ -6,6 +6,9 @@ command = zsh --login
 window-decoration = false
 macos-titlebar-style = hidden
 
+# 한/영 cell 폭 완벽 정렬을 위해 Sarasa Mono K 단일 폰트 (Iosevka 기반 영문 + 본고딕 한글)
+font-family = "Sarasa Mono K"
+
 background = 000000
 background-opacity = 0.5
 background-blur = 20

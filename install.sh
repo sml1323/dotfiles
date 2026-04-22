@@ -68,6 +68,9 @@ done
 brew list --cask aerospace >/dev/null 2>&1 || brew install --cask nikitabobko/tap/aerospace
 brew list --cask font-hack-nerd-font >/dev/null 2>&1 || brew install --cask font-hack-nerd-font
 
+# Sarasa Mono K — 한/영 cell 폭 2:1 정렬되는 CJK 모노스페이스 (Ghostty 터미널 폰트)
+brew list --cask font-sarasa-gothic >/dev/null 2>&1 || brew install --cask font-sarasa-gothic
+
 # -----------------------------------------------------------------------------
 # 4. TPM
 # -----------------------------------------------------------------------------

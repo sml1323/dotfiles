@@ -59,6 +59,15 @@ for pkg in starship eza neofetch bat tmux fzf zoxide yazi lazygit ripgrep zsh-au
   brew list "$pkg" >/dev/null 2>&1 || brew install "$pkg"
 done
 
+# ricing 스택 (SketchyBar, JankyBorders, AeroSpace, Nerd Font)
+say "ricing 도구 설치 (sketchybar, borders, aerospace)"
+brew tap FelixKratz/formulae 2>/dev/null || true
+for pkg in sketchybar borders; do
+  brew list "$pkg" >/dev/null 2>&1 || brew install "$pkg"
+done
+brew list --cask aerospace >/dev/null 2>&1 || brew install --cask nikitabobko/tap/aerospace
+brew list --cask font-hack-nerd-font >/dev/null 2>&1 || brew install --cask font-hack-nerd-font
+
 # -----------------------------------------------------------------------------
 # 4. TPM
 # -----------------------------------------------------------------------------
@@ -110,6 +119,20 @@ if [ -d ~/.config/nvim-lazyvim ]; then
      ~/.config/nvim-lazyvim/lua/plugins/vim-tmux-navigator.lua
 fi
 
+# AeroSpace
+mkdir -p ~/.config/aerospace
+cp "$DOTFILES/overrides/aerospace/aerospace.toml" ~/.config/aerospace/aerospace.toml
+
+# SketchyBar (전체 트리 복사 + 실행 권한 보존)
+mkdir -p ~/.config/sketchybar
+cp -R "$DOTFILES/overrides/sketchybar/." ~/.config/sketchybar/
+chmod +x ~/.config/sketchybar/*.sh 2>/dev/null || true
+chmod +x ~/.config/sketchybar/plugins/*.sh 2>/dev/null || true
+
+# JankyBorders
+mkdir -p ~/.config/borders
+cp "$DOTFILES/overrides/borders/bordersrc" ~/.config/borders/bordersrc
+
 # -----------------------------------------------------------------------------
 # 7. hendrikmi 로컬 수정 (repo clone 안의 파일 손대기)
 # -----------------------------------------------------------------------------
@@ -131,7 +154,18 @@ if [ -x "$PYTHON_PATH" ]; then
 fi
 
 # -----------------------------------------------------------------------------
-# 8. 완료
+# 8. ricing 서비스 시작 + macOS 메뉴바 숨김
+# -----------------------------------------------------------------------------
+say "ricing 서비스 시작 (sketchybar, borders)"
+brew services start sketchybar >/dev/null 2>&1 || true
+brew services start felixkratz/formulae/borders >/dev/null 2>&1 || true
+
+say "macOS 메뉴바 자동 숨김 설정"
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
+killall SystemUIServer 2>/dev/null || true
+
+# -----------------------------------------------------------------------------
+# 9. 완료
 # -----------------------------------------------------------------------------
 cat <<EOF
 
@@ -143,7 +177,13 @@ cat <<EOF
   3. Ghostty: ⌘+Shift+, 로 config reload
   4. nvim 실행 → lazy.nvim이 플러그인 자동 설치
   5. :Mason → LSP 설치 진행 확인
+  6. AeroSpace: 시스템 설정 → 개인정보 및 보안 → 접근성에서 허용 후 수동 실행
+  7. YouTube Music (SketchyBar music 아이템용):
+     - https://github.com/th-ch/youtube-music 릴리즈에서 DMG 설치
+     - 앱 실행 → 확장 → API 서버(베타) → 활성화
+     - 인증 정책: "인증 없음", 포트: 26538
 
 백업: $BACKUP
 자세한 가이드: $DOTFILES/docs/setup-guide.md
+치트시트: $DOTFILES/docs/ricing-cheatsheet.md
 EOF

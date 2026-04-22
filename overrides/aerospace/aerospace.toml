@@ -65,20 +65,21 @@ inner.horizontal = 10
 inner.vertical =   10
 outer.left =       10
 outer.bottom =     10
-outer.top =        [{ monitor.main = 25 }, 50]
+outer.top =        38
 outer.right =      10
 
-# ws 1-5 → 맥북(main), ws 6-9 → 외부 모니터 (없으면 main으로 폴백)
+# ws 1-5 → 맥북 내장
+# ws 6-9 → Q27G2SG4B+(집) → secondary(회사 외부) → 맥북 폴백
 [workspace-to-monitor-force-assignment]
-1 = 'main'
-2 = 'main'
-3 = 'main'
-4 = 'main'
-5 = 'main'
-6 = ['secondary', 'main']
-7 = ['secondary', 'main']
-8 = ['secondary', 'main']
-9 = ['secondary', 'main']
+1 = 'Built-in Retina Display'
+2 = 'Built-in Retina Display'
+3 = 'Built-in Retina Display'
+4 = 'Built-in Retina Display'
+5 = 'Built-in Retina Display'
+6 = ['Q27G2SG4B+', 'secondary', 'Built-in Retina Display']
+7 = ['Q27G2SG4B+', 'secondary', 'Built-in Retina Display']
+8 = ['Q27G2SG4B+', 'secondary', 'Built-in Retina Display']
+9 = ['Q27G2SG4B+', 'secondary', 'Built-in Retina Display']
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes

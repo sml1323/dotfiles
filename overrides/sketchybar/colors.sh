@@ -19,11 +19,18 @@ export TRANSPARENT=0x00000000
 # export BACKGROUND=0xff282828
 
 # -- Everforest Dark Hard --
+# export CORNER_RADIUS=8
+# export BAR_COLOR=0xaa272e33
+# export ITEM_BG_COLOR=0xff2e383c
+# export ACCENT_COLOR=0xffa7c080
+# export BACKGROUND=0xff1e2326
+
+# -- Tokyo Night (Night variant) --
 export CORNER_RADIUS=8
-export BAR_COLOR=0xaa272e33
-export ITEM_BG_COLOR=0xff2e383c
-export ACCENT_COLOR=0xffa7c080
-export BACKGROUND=0xff1e2326
+export BAR_COLOR=0xaa1a1b26
+export ITEM_BG_COLOR=0xff292e42
+export ACCENT_COLOR=0xff7aa2f7
+export BACKGROUND=0xff16161e
 
 # -- Teal Scheme --
 # export BAR_COLOR=0xff001f30

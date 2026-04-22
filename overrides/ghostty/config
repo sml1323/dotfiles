@@ -1,7 +1,10 @@
 # Personal overrides on top of hendrikmi XDG config
 
 command = zsh --login
-macos-titlebar-style = transparent
+
+# Dark glass (Phase 10 — manishprivet 스타일 매칭)
+window-decoration = false
+macos-titlebar-style = hidden
 
 background = 000000
 background-opacity = 0.5

@@ -1,3 +1,6 @@
 .DS_Store
 *.swp
 *.bak
+
+# Phase 13 runtime state (points to local backup dir, not portable)
+.phase13-backup-path

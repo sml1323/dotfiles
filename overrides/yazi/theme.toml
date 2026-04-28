@@ -1,0 +1,5 @@
+# Personal override on top of hendrikmi yazi theme.toml
+# Phase 14: Tokyo Night theme unification
+# Original: dark = "nord" — change here to revert.
+[flavor]
+dark = "tokyo-night"

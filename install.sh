@@ -90,9 +90,8 @@ ln -sfn "$HENDRIKMI/zsh/.zshenv"               ~/.zshenv
 ln -sfn "$HENDRIKMI/zsh/git-completion.bash"   ~/.config/zsh/git-completion.bash
 ln -sfn "$HENDRIKMI/zsh/git-completion.zsh"    ~/.config/zsh/git-completion.zsh
 ln -sfn "$HENDRIKMI/starship/starship.toml"    ~/.config/starship/starship.toml
-ln -sfn "$HENDRIKMI/tmux/tmux.conf"            ~/.config/tmux/tmux.conf
 ln -sfn "$HENDRIKMI/nvim"                      ~/.config/nvim
-ln -sfn "$HENDRIKMI/yazi"                      ~/.config/yazi
+# tmux, yazi: 심링크 대신 overrides에서 복사 (아래 6번 섹션 참조)
 
 VSC="$HOME/Library/Application Support/Code/User"
 mkdir -p "$VSC"
@@ -135,6 +134,18 @@ chmod +x ~/.config/sketchybar/plugins/*.sh 2>/dev/null || true
 # JankyBorders
 mkdir -p ~/.config/borders
 cp "$DOTFILES/overrides/borders/bordersrc" ~/.config/borders/bordersrc
+
+# tmux — wrapper sources hendrikmi 원본 + Tokyo Night 활성 pane 테두리
+# 기존 심링크가 있으면 cp가 따라가서 upstream을 덮어쓰므로 먼저 제거.
+mkdir -p ~/.config/tmux
+rm -f ~/.config/tmux/tmux.conf
+cp "$DOTFILES/overrides/tmux/tmux.conf" ~/.config/tmux/tmux.conf
+
+# yazi — hendrikmi 전체 복사 후 theme.toml + tokyo-night flavor 덮어씀
+rm -rf ~/.config/yazi
+cp -R "$HENDRIKMI/yazi" ~/.config/yazi
+cp "$DOTFILES/overrides/yazi/theme.toml" ~/.config/yazi/theme.toml
+cp -R "$DOTFILES/overrides/yazi/flavors/." ~/.config/yazi/flavors/
 
 # -----------------------------------------------------------------------------
 # 7. hendrikmi 로컬 수정 (repo clone 안의 파일 손대기)

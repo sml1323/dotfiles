@@ -8,7 +8,13 @@ sketchybar --add item aerospace_mode left \
   icon.padding_left=4 \
   drawing=off
 
-for sid in $(aerospace list-workspaces --all); do
+for i in {1..25}; do
+  workspaces=$(aerospace list-workspaces --all 2>/dev/null)
+  [ -n "$workspaces" ] && break
+  sleep 0.2
+done
+
+for sid in $workspaces; do
   monitor=$(aerospace list-windows --workspace "$sid" --format "%{monitor-appkit-nsscreen-screens-id}")
 
   if [ -z "$monitor" ]; then

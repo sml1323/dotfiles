@@ -17,7 +17,8 @@ source "$ITEM_DIR/front_app.sh"
 source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/battery.sh"
-# source "$ITEM_DIR/cpu.sh"
+# source "$ITEM_DIR/cpu.sh"     # tmux와 중복, 필요 시 활성화
+# source "$ITEM_DIR/memory.sh"  # tmux와 중복, 필요 시 활성화
 # source "$ITEM_DIR/caffeinate.sh"
 source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/music.sh"

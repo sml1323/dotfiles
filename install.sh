@@ -114,11 +114,19 @@ rm -f ~/.config/ghostty 2>/dev/null || true
 cp "$DOTFILES/overrides/zsh/custom.zsh"    ~/.config/zsh/custom.zsh
 cp "$DOTFILES/overrides/zsh/aliases.zsh"   ~/.config/zsh/aliases.zsh
 
+# nvim markdown/text wrap 설정
+mkdir -p "$HENDRIKMI/nvim/after/ftplugin"
+cp -R "$DOTFILES/overrides/nvim/after/ftplugin/." \
+   "$HENDRIKMI/nvim/after/ftplugin/"
+
 # LazyVim 플러그인 (LazyVim 환경이 있을 때만 복사)
 if [ -d ~/.config/nvim-lazyvim ]; then
   mkdir -p ~/.config/nvim-lazyvim/lua/plugins
+  mkdir -p ~/.config/nvim-lazyvim/after/ftplugin
   cp "$DOTFILES/overrides/nvim-lazyvim/plugins/vim-tmux-navigator.lua" \
      ~/.config/nvim-lazyvim/lua/plugins/vim-tmux-navigator.lua
+  cp -R "$DOTFILES/overrides/nvim-lazyvim/after/ftplugin/." \
+     ~/.config/nvim-lazyvim/after/ftplugin/
 fi
 
 # AeroSpace

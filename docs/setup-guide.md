@@ -1,6 +1,6 @@
 # Setup Guide — 현재 적용 상태
 
-최종 업데이트: 2026-04-21
+최종 업데이트: 2026-04-28
 베이스: [hendrikmi/dotfiles](https://github.com/hendrikmi/dotfiles)
 내 repo: [sml1323/dotfiles](https://github.com/sml1323/dotfiles)
 Clone 위치: `~/third-party/hendrikmi-dotfiles/`
@@ -16,8 +16,8 @@ Clone 위치: `~/third-party/hendrikmi-dotfiles/`
 | **zsh** | ✅ | plain zsh (oh-my-zsh 버림) + hendrikmi `.zshrc`/`.zshenv` 심링크 + 개인 `custom.zsh`/`aliases.zsh` |
 | **starship** | ✅ | hendrikmi config 심링크 |
 | **tmux** | ✅ | hendrikmi tmux.conf + TPM + LazyVim에 vim-tmux-navigator 추가 |
-| **nvim (hendrikmi)** | ✅ | **default `nvim`**. init.lua/debug.lua 로컬 수정 |
-| **nvim (LazyVim)** | ✅ | `nvl` alias로 병행 접근 (전체 보존) |
+| **nvim (hendrikmi)** | ✅ | **default `nvim`**. init.lua/debug.lua 로컬 수정 + markdown/text wrap |
+| **nvim (LazyVim)** | ✅ | `nvl` alias로 병행 접근 (전체 보존) + markdown/text wrap |
 | **yazi** | ✅ | hendrikmi 설정 심링크 |
 | **VSCode** | ✅ | settings/keybindings 심링크 |
 | **eza, neofetch, bat, starship** | ✅ | brew 추가 설치 |
@@ -194,12 +194,14 @@ cp ~/dotfiles-backup-20260418/ghostty-library-config \
   - `-- require 'plugins.bufferline'` → **주석 해제** (탭바 활성화)
 - `nvim/lua/plugins/debug.lua`:
   - `require('dap-python').setup()` → `setup('/Library/Frameworks/Python.framework/Versions/3.12/bin/python3')` (brew Python 3.14에 debugpy 없음)
+- `nvim/after/ftplugin/{markdown,text}.lua`:
+  - markdown/text 파일에서만 `wrap`, `linebreak`, `breakindent` 활성화
 
 ### 5-4. LazyVim 경로 (보존)
 
 | 경로 | 내용 |
 |------|------|
-| `~/.config/nvim-lazyvim` | LazyVim config + 커스텀(dap_python, ruff, markdown_safe) + 추가된 `plugins/vim-tmux-navigator.lua` |
+| `~/.config/nvim-lazyvim` | LazyVim config + 커스텀(dap_python, ruff, markdown_safe) + 추가된 `plugins/vim-tmux-navigator.lua` + markdown/text wrap |
 | `~/.local/share/nvim-lazyvim` | LazyVim 플러그인 데이터 |
 
 ### 5-5. LSP (mason 자동 설치)
@@ -313,7 +315,8 @@ brew uninstall eza neofetch starship bat
 ├── overrides/              # 내 개인 파일 (hendrikmi 위에 덮어쓰기)
 │   ├── ghostty/config
 │   ├── zsh/{custom.zsh, aliases.zsh}
-│   └── nvim-lazyvim/plugins/vim-tmux-navigator.lua
+│   ├── nvim/after/ftplugin/{markdown,text}.lua
+│   └── nvim-lazyvim/{plugins,after/ftplugin}
 ├── sources/                # 차용 출처 기록
 ├── docs/                   # 이 가이드 + 키 치트시트
 └── backgrounds/            # 터미널 배경 이미지

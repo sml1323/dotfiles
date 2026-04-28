@@ -12,8 +12,8 @@ macOS 개인 dotfiles. 여러 공개 dotfiles 저장소에서 **차용한 베이
 | zsh | [hendrikmi/dotfiles](https://github.com/hendrikmi/dotfiles) 심링크 | [`overrides/zsh/custom.zsh`](overrides/zsh/custom.zsh), [`aliases.zsh`](overrides/zsh/aliases.zsh) — Python/Node 스택 조정, 개인 env vars 추가 |
 | starship | hendrikmi 심링크 | (없음) |
 | tmux | hendrikmi 심링크 | (없음) |
-| nvim (hendrikmi) | hendrikmi 심링크 (default) | `init.lua`/`debug.lua` 로컬 수정 — wezterm preview off, dap-python Python 경로 명시, bufferline 활성화 |
-| nvim (LazyVim) | `nvim-lazyvim` APPNAME 격리 유지 | [`overrides/nvim-lazyvim/plugins/vim-tmux-navigator.lua`](overrides/nvim-lazyvim/plugins/vim-tmux-navigator.lua) |
+| nvim (hendrikmi) | hendrikmi 심링크 (default) | `init.lua`/`debug.lua` 로컬 수정 + [`overrides/nvim/after/ftplugin`](overrides/nvim/after/ftplugin) — wezterm preview off, dap-python Python 경로 명시, bufferline 활성화, markdown/text wrap |
+| nvim (LazyVim) | `nvim-lazyvim` APPNAME 격리 유지 | [`overrides/nvim-lazyvim/plugins/vim-tmux-navigator.lua`](overrides/nvim-lazyvim/plugins/vim-tmux-navigator.lua), [`overrides/nvim-lazyvim/after/ftplugin`](overrides/nvim-lazyvim/after/ftplugin) |
 | yazi | hendrikmi 심링크 | (없음) |
 | VSCode | hendrikmi 심링크 | (없음) |
 | karabiner | **미적용** (한영 Caps Lock 충돌) | — |
@@ -32,7 +32,8 @@ macOS 개인 dotfiles. 여러 공개 dotfiles 저장소에서 **차용한 베이
 overrides/        # 내 개인 파일만 (hendrikmi 등 원본은 clone해서 심링크)
 ├── ghostty/
 ├── zsh/
-├── nvim-lazyvim/plugins/
+├── nvim/after/ftplugin/
+├── nvim-lazyvim/
 ├── aerospace/            # AeroSpace 타일링 WM
 ├── borders/              # JankyBorders 창 테두리
 └── sketchybar/           # SketchyBar 상태바

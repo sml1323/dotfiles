@@ -146,7 +146,7 @@ cp ~/dotfiles-backup-20260418/ghostty-library-config \
 
 | 경로 | 타입 |
 |------|------|
-| `~/.config/tmux/tmux.conf` | 심링크 → hendrikmi |
+| `~/.config/tmux/tmux.conf` | `overrides/tmux/tmux.conf` 사본 (install.sh가 `cp`). 내부에서 hendrikmi 원본을 `source-file`로 import 후 override |
 | `~/.tmux/plugins/tpm` | TPM clone |
 
 ### 4-1. 핵심 설정
@@ -154,7 +154,7 @@ cp ~/dotfiles-backup-20260418/ghostty-library-config \
 - **마우스 on** — pane 드래그/클릭/스크롤
 - **기본 shell = zsh**
 - **status-position = top**
-- **true color 지원** + `detach-on-destroy off`
+- **true color + italic + styled-underline 지원** (`default-terminal=tmux-256color`, Ghostty `terminal-features`로 RGB/usstyle 통과) + `detach-on-destroy off`
 - **base-index = 1** (1번부터 번호 매김)
 - **vi mode** for copy
 - **Nord 색감 상태바** (hendrikmi 스타일)

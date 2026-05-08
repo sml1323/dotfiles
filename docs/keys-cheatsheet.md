@@ -91,7 +91,6 @@
 | diagnostic 창 열기 | `<space>d` |
 | diagnostic 목록 | `<space>q` |
 | diagnostic on/off | `<space>do` |
-| 현재 줄 진단 → 클립보드 | `<space>cy` |
 | inlay hints 토글 | `<space>th` |
 | 저장 시 포맷 (Python: ruff) | `:w` 자동 |
 

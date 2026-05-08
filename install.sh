@@ -119,6 +119,11 @@ mkdir -p "$HENDRIKMI/nvim/after/ftplugin"
 cp -R "$DOTFILES/overrides/nvim/after/ftplugin/." \
    "$HENDRIKMI/nvim/after/ftplugin/"
 
+# nvim LSP — pylsp 제거 + basedpyright 활성화(.venv 자동 감지) + ruff hover off
+mkdir -p "$HENDRIKMI/nvim/lua/plugins"
+cp "$DOTFILES/overrides/nvim/lua/plugins/lsp.lua" \
+   "$HENDRIKMI/nvim/lua/plugins/lsp.lua"
+
 # LazyVim 플러그인 (LazyVim 환경이 있을 때만 복사)
 if [ -d ~/.config/nvim-lazyvim ]; then
   mkdir -p ~/.config/nvim-lazyvim/lua/plugins

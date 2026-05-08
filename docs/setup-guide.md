@@ -205,7 +205,12 @@ cp ~/dotfiles-backup-20260418/ghostty-library-config \
 | `~/.local/share/nvim-lazyvim` | LazyVim 플러그인 데이터 |
 
 ### 5-5. LSP (mason 자동 설치)
-`lua_ls`, `pylsp`, `ruff`, `jsonls`, `yamlls`, `sqlls`, `terraformls`, `bashls`, `dockerls`, `docker_compose_language_service`, `html`, `stylua`
+`lua_ls`, `basedpyright`, `ruff`, `jsonls`, `yamlls`, `sqlls`, `terraformls`, `bashls`, `dockerls`, `docker_compose_language_service`, `html`, `stylua`
+
+Python LSP 구성 (override `nvim/lua/plugins/lsp.lua`):
+- **basedpyright** — 타입 추론/hover 담당. `before_init`에서 프로젝트 루트의 `.venv/bin/python`을 자동으로 잡아주므로 프로젝트마다 `pyrightconfig.json` 또는 `[tool.basedpyright]` 작성 불필요.
+- **ruff** — lint/format/import 정리만. hover는 비활성(basedpyright와 중복 방지).
+- pylsp는 사용하지 않음 (SQLAlchemy 2.0 `Mapped[...]` 같은 generic 추론이 약해 basedpyright로 교체).
 
 ### 5-6. 키맵
 [`keys-cheatsheet.md`](keys-cheatsheet.md) 참고.

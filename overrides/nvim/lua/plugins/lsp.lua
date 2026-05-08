@@ -86,11 +86,36 @@ return {
           print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, '[W]orkspace [L]ist Folders')
 
+        -- Copy current line's diagnostic message(s) to system clipboard.
+        map('<leader>cy', function()
+          local diags = vim.diagnostic.get(0, { lnum = vim.fn.line '.' - 1 })
+          if #diags == 0 then
+            vim.notify('No diagnostic on this line', vim.log.levels.WARN)
+            return
+          end
+          local msg = table.concat(
+            vim.tbl_map(function(d) return d.message end, diags),
+            '\n'
+          )
+          vim.fn.setreg('+', msg)
+          vim.notify('Copied: ' .. msg)
+        end, '[C]opy diagnostic [Y]ank to clipboard')
+
         -- The following two autocommands are used to highlight references of the
         -- word under your cursor when your cursor rests there for a little while.
         --    See `:help CursorHold` for information about when this is executed
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
         local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+        -- Ruff: format on save (lint diagnostics already auto-displayed).
+        if client and client.name == 'ruff' then
+          vim.api.nvim_create_autocmd('BufWritePre', {
+            buffer = event.buf,
+            callback = function()
+              vim.lsp.buf.format { async = false, name = 'ruff' }
+            end,
+          })
+        end
         if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
           local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {

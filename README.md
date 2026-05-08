@@ -12,7 +12,7 @@ macOS 개인 dotfiles. 여러 공개 dotfiles 저장소에서 **차용한 베이
 | zsh | [hendrikmi/dotfiles](https://github.com/hendrikmi/dotfiles) 심링크 | [`overrides/zsh/custom.zsh`](overrides/zsh/custom.zsh), [`aliases.zsh`](overrides/zsh/aliases.zsh) — Python/Node 스택 조정, 개인 env vars 추가 |
 | starship | hendrikmi 심링크 | (없음) |
 | tmux | hendrikmi `source-file` + overrides 사본 | [`overrides/tmux/tmux.conf`](overrides/tmux/tmux.conf) — extended-keys (CSI-u), Shift+Enter codex 분기, vim-tmux-navigator 패턴(codex 제외), Tokyo Night 테두리, `tmux-256color` terminfo (italic 지원) |
-| nvim (hendrikmi) | hendrikmi 심링크 (default) | `init.lua`/`debug.lua` 로컬 수정 + [`overrides/nvim/after/ftplugin`](overrides/nvim/after/ftplugin) — wezterm preview off, dap-python Python 경로 명시, bufferline 활성화, markdown/text wrap. [`overrides/nvim/after/plugin/virtualedit.lua`](overrides/nvim/after/plugin/virtualedit.lua) — `virtualedit=onemore` ($로 마지막 문자 한 칸 뒤까지). [`overrides/nvim/lua/plugins/lsp.lua`](overrides/nvim/lua/plugins/lsp.lua) — pylsp 제거 → basedpyright (`.venv` 자동 감지) + ruff hover off |
+| nvim (hendrikmi) | hendrikmi 심링크 (default) | `init.lua`/`debug.lua` 로컬 수정 + [`overrides/nvim/after/ftplugin`](overrides/nvim/after/ftplugin) — wezterm preview off, dap-python Python 경로 명시, bufferline 활성화, markdown/text wrap. [`overrides/nvim/lua/plugins/lsp.lua`](overrides/nvim/lua/plugins/lsp.lua) — pylsp 제거 → basedpyright (`.venv` 자동 감지) + ruff hover off |
 | nvim (LazyVim) | `nvim-lazyvim` APPNAME 격리 유지 | [`overrides/nvim-lazyvim/plugins/vim-tmux-navigator.lua`](overrides/nvim-lazyvim/plugins/vim-tmux-navigator.lua), [`overrides/nvim-lazyvim/after/ftplugin`](overrides/nvim-lazyvim/after/ftplugin) |
 | yazi | hendrikmi 심링크 | (없음) |
 | VSCode | hendrikmi 심링크 | (없음) |
@@ -33,7 +33,6 @@ overrides/        # 내 개인 파일만 (hendrikmi 등 원본은 clone해서 �
 ├── ghostty/
 ├── zsh/
 ├── nvim/after/ftplugin/
-├── nvim/after/plugin/    # 전역 옵션 override (virtualedit 등)
 ├── nvim/lua/plugins/     # lsp.lua override (basedpyright)
 ├── nvim-lazyvim/
 ├── aerospace/            # AeroSpace 타일링 WM

@@ -119,11 +119,6 @@ mkdir -p "$HENDRIKMI/nvim/after/ftplugin"
 cp -R "$DOTFILES/overrides/nvim/after/ftplugin/." \
    "$HENDRIKMI/nvim/after/ftplugin/"
 
-# nvim 전역 옵션 override (after/plugin은 모든 플러그인 후 실행 — 옵션 덮어쓰기 적합)
-mkdir -p "$HENDRIKMI/nvim/after/plugin"
-cp -R "$DOTFILES/overrides/nvim/after/plugin/." \
-   "$HENDRIKMI/nvim/after/plugin/"
-
 # nvim LSP — pylsp 제거 + basedpyright 활성화(.venv 자동 감지) + ruff hover off
 mkdir -p "$HENDRIKMI/nvim/lua/plugins"
 cp "$DOTFILES/overrides/nvim/lua/plugins/lsp.lua" \

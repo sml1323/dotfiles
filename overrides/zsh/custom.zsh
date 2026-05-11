@@ -166,3 +166,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # npm global (Node/JS 스택 안 쓰므로 주석 — 필요하면 풀기)
 # export PATH="$HOME/.npm-global/bin:$PATH"
+
+# Codex CLI
+export PATH="/Applications/Codex.app/Contents/Resources:$PATH"

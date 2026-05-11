@@ -107,8 +107,9 @@ say "개인 오버라이드 적용"
 mkdir -p "$(dirname "$LIB_CONFIG")"
 cp "$DOTFILES/overrides/ghostty/config" "$LIB_CONFIG"
 
-# XDG Ghostty 심링크는 제거 (Library config가 모든 걸 관리)
-rm -f ~/.config/ghostty 2>/dev/null || true
+# XDG Ghostty 디렉토리/심링크 제거 (Library config가 모든 걸 관리)
+# 디렉토리일 수도 있어서 -rf 필요 — 안 그러면 잔재 파일이 Library와 머지돼 충돌
+rm -rf ~/.config/ghostty 2>/dev/null || true
 
 # zsh 개인 사본
 cp "$DOTFILES/overrides/zsh/custom.zsh"    ~/.config/zsh/custom.zsh

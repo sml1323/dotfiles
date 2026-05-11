@@ -1,17 +1,37 @@
 # Personal overrides on top of hendrikmi XDG config
 
-command = zsh --login
+# tmux auto-attach (있으면 attach, 없으면 새로 생성)
+command = zsh --login -c "if command -v tmux >/dev/null 2>&1; then tmux attach || tmux; else zsh; fi"
 
 # Dark glass (Phase 10 — manishprivet 스타일 매칭)
 window-decoration = false
 macos-titlebar-style = hidden
 
-# 한/영 cell 폭 완벽 정렬을 위해 Sarasa Mono K 단일 폰트 (Iosevka 기반 영문 + 본고딕 한글)
+# Font — 한/영 cell 폭 완벽 정렬 (Iosevka 영문 + 본고딕 한글 합성)
 font-family = "Sarasa Mono K"
+font-size = 12.5
+font-thicken = true
+font-thicken-strength = 0
 
+# Cursor
+cursor-style = bar
+cursor-style-blink = true
+cursor-color = #A3BE8C
+mouse-hide-while-typing = true
+
+# Window
 background = 000000
 background-opacity = 0.5
 background-blur = 20
+window-save-state = always
+confirm-close-surface = false
+quick-terminal-position = center
+window-padding-x = 4,0
+window-padding-y = 2,0
 
 # 드래그 선택만으로 복사되지 않게 (Cmd+C로 명시 복사)
 copy-on-select = false
+
+# Shift+Enter는 CSI-u로 보내서 tmux가 Ctrl+J pane navigation과 구별 가능
+keybind = ctrl+enter=text:\x1b[13;5u
+keybind = shift+enter=text:\x1b[13;2u

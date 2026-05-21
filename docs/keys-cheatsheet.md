@@ -194,6 +194,20 @@ server (백그라운드 데몬)
 | `P $` | 세션 이름 바꾸기 |
 | `P (` / `P )` | 이전 / 다음 세션 |
 
+### 세션 저장 / 복원 (resurrect + continuum)
+
+재부팅·종료 후에도 세션·윈도우·페인 레이아웃을 복구. `overrides/tmux/tmux.conf`에서 `@continuum-restore 'on'`으로 자동 복원 켜져 있음.
+
+| 키 / 동작 | 설명 |
+|-----------|------|
+| `P Ctrl+s` | **수동 저장** (현재 세션 스냅샷) |
+| `P Ctrl+r` | **수동 복원** (마지막 스냅샷에서) |
+| 자동 저장 | 15분마다 (tmux-continuum 기본값) |
+| 자동 복원 | tmux 서버 시작 시 (`@continuum-restore 'on'`) |
+| 저장 위치 | `~/.local/share/tmux/resurrect/` |
+
+**팁**: 복원 직후엔 셸 history만 살아 있고 실행 중이던 프로세스(예: `nvim`, `claude`)는 다시 띄워야 함. resurrect 추가 옵션으로 특정 프로세스 자동 재실행 설정 가능.
+
 ### 윈도우 (탭 같은 것)
 
 | 키 | 동작 |

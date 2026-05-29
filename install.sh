@@ -125,6 +125,10 @@ mkdir -p "$HENDRIKMI/nvim/lua/plugins"
 cp "$DOTFILES/overrides/nvim/lua/plugins/lsp.lua" \
    "$HENDRIKMI/nvim/lua/plugins/lsp.lua"
 
+# nvim Telescope — <leader>sg live_grep을 git 루트 기준으로 (하위 디렉토리에서 켜도 프로젝트 전체 검색)
+cp "$DOTFILES/overrides/nvim/lua/plugins/telescope.lua" \
+   "$HENDRIKMI/nvim/lua/plugins/telescope.lua"
+
 # LazyVim 플러그인 (LazyVim 환경이 있을 때만 복사)
 if [ -d ~/.config/nvim-lazyvim ]; then
   mkdir -p ~/.config/nvim-lazyvim/lua/plugins

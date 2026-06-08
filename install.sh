@@ -71,6 +71,13 @@ brew list --cask font-hack-nerd-font >/dev/null 2>&1 || brew install --cask font
 # Sarasa Mono K — 한/영 cell 폭 2:1 정렬되는 CJK 모노스페이스 (Ghostty 터미널 폰트)
 brew list --cask font-sarasa-gothic >/dev/null 2>&1 || brew install --cask font-sarasa-gothic
 
+# nvim 마크다운 LaTeX 수식 → inline 이미지 렌더 (mdmath.nvim) 의존성
+# node/npm: KaTeX 렌더 서버, librsvg: rsvg-convert, imagemagick: magick
+say "mdmath(수식 렌더) 의존성 설치 (node, librsvg, imagemagick)"
+for pkg in node librsvg imagemagick; do
+  brew list "$pkg" >/dev/null 2>&1 || brew install "$pkg"
+done
+
 # -----------------------------------------------------------------------------
 # 4. TPM
 # -----------------------------------------------------------------------------
@@ -129,6 +136,14 @@ cp "$DOTFILES/overrides/nvim/lua/plugins/lsp.lua" \
 cp "$DOTFILES/overrides/nvim/lua/plugins/telescope.lua" \
    "$HENDRIKMI/nvim/lua/plugins/telescope.lua"
 
+# nvim mdmath — 마크다운 LaTeX 수식을 KaTeX inline 이미지로 렌더 (Ghostty + tmux passthrough)
+cp "$DOTFILES/overrides/nvim/lua/plugins/mdmath.lua" \
+   "$HENDRIKMI/nvim/lua/plugins/mdmath.lua"
+
+# nvim render-markdown — latex 텍스트 변환 끔 (mdmath 이미지와 중복 방지)
+cp "$DOTFILES/overrides/nvim/lua/plugins/render-markdown.lua" \
+   "$HENDRIKMI/nvim/lua/plugins/render-markdown.lua"
+
 # LazyVim 플러그인 (LazyVim 환경이 있을 때만 복사)
 if [ -d ~/.config/nvim-lazyvim ]; then
   mkdir -p ~/.config/nvim-lazyvim/lua/plugins
@@ -177,6 +192,11 @@ sed -i '' "s|^require 'tools.wezterm-img-preview'|-- require 'tools.wezterm-img-
 # bufferline 활성화
 sed -i '' "s|^  -- require 'plugins.bufferline',|  require 'plugins.bufferline',|g" \
   "$HENDRIKMI/nvim/init.lua" 2>/dev/null || true
+
+# mdmath 플러그인을 lazy 목록에 등록 (render-markdown 다음 줄, 이미 있으면 skip)
+grep -q 'plugins.mdmath' "$HENDRIKMI/nvim/init.lua" 2>/dev/null || \
+  perl -i -pe "s|(\s*require 'plugins\.render-markdown',)|\$1\n  require 'plugins.mdmath',|" \
+    "$HENDRIKMI/nvim/init.lua" 2>/dev/null || true
 
 # dap-python Python 경로 명시 (Python 3.12 기준)
 PYTHON_PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin/python3"

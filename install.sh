@@ -144,6 +144,14 @@ cp "$DOTFILES/overrides/nvim/lua/plugins/mdmath.lua" \
 cp "$DOTFILES/overrides/nvim/lua/plugins/render-markdown.lua" \
    "$HENDRIKMI/nvim/lua/plugins/render-markdown.lua"
 
+# nvim ipynb — Jupyter notebook(.ipynb) native editing experiment
+cp "$DOTFILES/overrides/nvim/lua/plugins/ipynb.lua" \
+   "$HENDRIKMI/nvim/lua/plugins/ipynb.lua"
+
+# nvim DAP — <leader>5~9 디버그 키맵 (5 continue / 6 into / 7 over / 8 out / 9 breakpoint)
+cp "$DOTFILES/overrides/nvim/lua/plugins/debug.lua" \
+   "$HENDRIKMI/nvim/lua/plugins/debug.lua"
+
 # LazyVim 플러그인 (LazyVim 환경이 있을 때만 복사)
 if [ -d ~/.config/nvim-lazyvim ]; then
   mkdir -p ~/.config/nvim-lazyvim/lua/plugins
@@ -196,6 +204,11 @@ sed -i '' "s|^  -- require 'plugins.bufferline',|  require 'plugins.bufferline',
 # mdmath 플러그인을 lazy 목록에 등록 (render-markdown 다음 줄, 이미 있으면 skip)
 grep -q 'plugins.mdmath' "$HENDRIKMI/nvim/init.lua" 2>/dev/null || \
   perl -i -pe "s|(\s*require 'plugins\.render-markdown',)|\$1\n  require 'plugins.mdmath',|" \
+    "$HENDRIKMI/nvim/init.lua" 2>/dev/null || true
+
+# ipynb.nvim 플러그인을 lazy 목록에 등록 (실험용 .ipynb 네이티브 편집)
+grep -q 'plugins.ipynb' "$HENDRIKMI/nvim/init.lua" 2>/dev/null || \
+  perl -i -pe "s|(\s*require 'plugins\.mdmath',)|\$1\n  require 'plugins.ipynb',|" \
     "$HENDRIKMI/nvim/init.lua" 2>/dev/null || true
 
 # dap-python Python 경로 명시 (Python 3.12 기준)

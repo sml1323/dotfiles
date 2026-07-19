@@ -127,9 +127,9 @@
 
 | 목적 | 키 |
 |------|----|
-| 시작 / 계속 | `F5` |
-| step into / over / out | `F1` / `F2` / `F3` |
-| breakpoint 토글 | `<space>b` (⚠️ 새 버퍼 키와 충돌 — 디버그 모드에서 breakpoint 우선) |
+| 시작 / 계속 | `<space>5` 또는 `F5` |
+| step into / over / out | `<space>6` / `<space>7` / `<space>8` (또는 `F1` / `F2` / `F3`) |
+| breakpoint 토글 | `<space>9` 또는 `<space>b` (⚠️ b는 새 버퍼 키와 충돌 — 디버그 모드에서 breakpoint 우선) |
 | 조건부 breakpoint | `<space>B` |
 | DAP UI 토글 | `F7` |
 

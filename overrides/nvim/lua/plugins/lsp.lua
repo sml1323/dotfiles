@@ -200,7 +200,8 @@ return {
         end,
       },
       jsonls = {},
-      sqlls = {},
+      -- sqlls 제거 — postgres/plpgsql 을 못 읽어서 `CREATE OR REPLACE FUNCTION` 마다
+      -- 오탐을 낸다. SQL 진단은 none-ls 의 sqlfluff 가 담당.
       terraformls = {},
       yamlls = {},
       bashls = {},
